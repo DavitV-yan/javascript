@@ -20,7 +20,6 @@ mickyImage.src = "files/micky.png";
 const stabAudio = document.createElement("audio");
 stabAudio.src = "files/audio2.mp3";
 
-
 let data = {
   hero: {
     xDelta: 0,
