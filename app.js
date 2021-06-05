@@ -37,9 +37,9 @@ let data = {
 
 function intersect(rect1, rect2) {
   const x = Math.max(rect1.x, rect2.x),
-      num1 = Math.min(rect1.x + rect1.width, rect2.x + rect2.width),
-      y = Math.max(rect1.y, rect2.y),
-      num2 = Math.min(rect1.y + rect1.height, rect2.y + rect2.height);
+    num1 = Math.min(rect1.x + rect1.width, rect2.x + rect2.width),
+    y = Math.max(rect1.y, rect2.y),
+    num2 = Math.min(rect1.y + rect1.height, rect2.y + rect2.height);
   return (num1 >= x && num2 >= y);
 };
 
@@ -47,22 +47,22 @@ function update() {
   data.hero.x += data.hero.xDelta;
   data.hero.y += data.hero.yDelta;
 
-  data.bullets.forEach(function(bullet){
-    data.mickyes.forEach(function(micky){
+  data.bullets.forEach(function (bullet) {
+    data.mickyes.forEach(function (micky) {
       if (intersect(micky, bullet)) {
-          stabAudio.currentTime = 0;
-          stabAudio.play();
-          bullet.deleteMe = true;
-          micky.deleteMe = true;
+        stabAudio.currentTime = 0;
+        stabAudio.play();
+        bullet.deleteMe = true;
+        micky.deleteMe = true;
       }
     });
   });
 
-  data.bullets = data.bullets.filter(function(bullet){
+  data.bullets = data.bullets.filter(function (bullet) {
     return bullet.deleteMe !== true;
   });
 
-  data.mickyes = data.mickyes.filter(function(micky){
+  data.mickyes = data.mickyes.filter(function (micky) {
     return micky.deleteMe !== true;
   });
 
@@ -78,12 +78,12 @@ function update() {
     return true;
   });
 
-  data.mickyes.forEach(function (micky){
+  data.mickyes.forEach(function (micky) {
     micky.x += micky.xDelta;
   });
 
   if (data.mickyes.length === 0) {
-      data.mickyes.push({
+    data.mickyes.push({
       xDelta: -1,
       x: canvas.width - 100,
       y: data.hero.y,
